@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.dark-mode header, .dark-mode #options-panel input, .dark-mode #options-panel select, .dark-mode #options-panel button, .dark-mode #options-panel i, .dark-mode #options-panel textarea, .dark-mode #options-panel .panel-control-color-input, .dark-mode #options-panel span{
+    background-color: #E0E0E0;
+}
+
+.dark-mode header h1, .dark-mode header li, .dark-mode #options-panel button, .dark-mode #options-panel h5, .dark-mode #options-panel p, .dark-mode #options-panel label, .dark-mode #options-panel span, .dark-mode #options-panel select, .dark-mode #options-panel i, .dark-mode #options-panel textarea, .dark-mode #options-panel input{
+    color: dimgray;
+}
+
+.dark-mode .generator-background {
+    background-color: #EEEEEE;
+}
+
+.dark-mode #options-panel {
+    background-color: white;
+}
+
+.dark-mode #options-panel input[type="range"] {
+    background-color: dimgray;
+}
+
+/*Transiciones*/
+
+li:hover, #reset-btn:hover, .fa-align-left:hover, .fa-align-center:hover, .fa-align-right:hover, #cont-claro:hover, #cont-none:hover, #cont-oscuro:hover {
+    background-color: #5a5d68;
+}
+
+.dark-mode li:hover, .dark-mode #options-panel button:hover, .dark-mode #options-panel i:hover, .dark-mode #cont-claro:hover, .dark-mode #cont-none:hover, .dark-mode #cont-oscuro:hover {
+    background-color: #bebebe;
+}
+
+select:focus, input:focus, button:focus, textarea:focus {
+    outline: none;
+    background-color: #3b4053;
+}
+
+.download-btn:hover {
+    background-color: #1f5221;
+}
+
+
+/*Responsive*/
+
+@media screen and (max-width: 900px) {
+    aside {
+       display: none;
+    }
+}

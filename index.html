@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8c602d17e1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="generador.css">
+    <link rel="stylesheet" href="panel.css">
+    <link rel="stylesheet" href="panel-texto.css">
+    <title>Editor de memes</title>
+</head>
+<body id="cuerpo">
+        <!--Espacio Generador-->
+        <main class="generator">
+            <header>
+                <h1>Generador de Memes</h1>
+                <nav>
+                    <ul>
+                        <li id="img-btn" onclick="paneles()"><i class="fas fa-file-image"></i> Imagen</li>
+                        <li id="text-btn" onclick="paneles()"><i class="fas fa-font"></i> Texto</li>
+                        <li id="mode-btn"><i class="far fa-lightbulb"></i> Modo oscuro</li>
+                        <li id="dark-btn" style="display: none;"><i class="fas fa-lightbulb"></i> Modo claro</li>
+                    </ul>
+                </nav>
+            </header>
+            <!--Seccion generador-->
+            <div class="container">
+                <section class="generator-background">
+                    <!--Generador-->
+                    <article class="generator-meme-background">
+                        <div class="generator-meme">
+                            <p class="meme-text" id="top-text">top text</p>
+                            <div id="meme-img"></div>
+                            <p class="meme-text" id="bottom-text">bottom text</p>
+                        </div>
+                        <!--Boton descargar-->
+                        <button type="button" id="download-btn"><i class="fas fa-download"></i> Descargar meme</button>
+                    </article>
+                    <!--Panel de opciones-->
+                    <aside id="options-panel">
+                        <button type="button" id="close-btn"><i class="fas fa-times" style="visibility: hidden;"></i></button>
+                        <!--Panel imagen-->
+                        <section id="img-panel">
+                            <h5 class="panel-title">imagen</h5>
+                            <div class="panel-control">
+                                <p class="panel-control-title">url</p>
+                                <input type="text" name="img-url" id="img-url">
+                            </div>
+                            <div class="panel-control">
+                                <p class="panel-control-title">fondo</p>
+                                <div class="panel-control-inline">
+                                    <div class="panel-control-color-input">
+                                        <input type="color" name="fondo-color" id="fondo-color" value="#ffffff">
+                                        <span id="color-value">#FFFFFF</span>
+                                    </div>
+                                    <select name="blend-mode" id="blend-mode">
+                                        <option value="ninguno">Ninguno</option>
+                                        <option value="aclarar">Aclarar</option>
+                                        <option value="oscurecer">Oscurecer</option>
+                                        <option value="diferencia">Diferencia</option>
+                                        <option value="luminosidad">Luminosidad</option>
+                                        <option value="multiplicar">Multiplicar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-control">
+                                <p class="panel-control-title">filtros</p>
+                                <div class="panel-control panel-control-inner">
+                                    <label for="brillo">brillo</label>
+                                    <input type="range" name="brillo" id="brillo" min="0" max="1" value="1" step="0.1">
+                                </div>
+                                <div class="panel-control panel-control-inner">
+                                    <label for="opacidad">opacidad</label>
+                                    <input type="range" name="opacidad" id="opacidad" min="0" max="1" value="1" step="0.1">
+                                </div>
+                                <div class="panel-control panel-control-inner">
+                                    <label for="contraste">contraste</label>
+                                    <input type="range" name="contraste" id="contraste" min="100" max="1000" value="100">
+                                </div>
+                                <div class="panel-control panel-control-inner">
+                                    <label for="desenfoque">desenfoque</label>
+                                    <input type="range" name="desenfoque" id="desenfoque" min="0" max="10" value="0" step="0.1">
+                                </div>
+                                <div class="panel-control panel-control-inner">
+                                    <label for="escala-de-grises">escala de grises</label>
+                                    <input type="range" name="escala-de-grises" id="escala-de-grises" min="0" max="100" value="0">
+                                </div>
+                                <div class="panel-control panel-control-inner">
+                                    <label for="sepia">sepia</label>
+                                    <input type="range" name="sepia" id="sepia" min="0" max="100" value="0">
+                                </div>
+                                <div class="panel-control panel-control-inner">
+                                    <label for="hue">hue</label>
+                                    <input type="range" name="hue" id="hue" min="0" max="360" value="0">
+                                </div>
+                                <div class="panel-control panel-control-inner">
+                                    <label for="saturado">saturado</label>
+                                    <input type="range" name="saturado" id="saturado" min="100" max="1000" value="100" step="10">
+                                </div>
+                                <div class="panel-control panel-control-inner">
+                                    <label for="negativo">negativo</label>
+                                    <input type="range" name="negativo" id="negativo" min="0" max="1" value="0" step="0.1">
+                                </div>
+                                <div class="panel-control panel-control-inner">
+                                    <button type="button" id="reset-btn">Reestablecer filtros</button>
+                                </div>
+                            </div>
+                        </section>
+                        <!--Panel texto-->
+                        <section id="text-panel" style="display: none;">
+                            <h5 class="panel-title">texto</h5>
+                            <div class="panel-control">
+                                <p class="panel-control-title">superior</p>
+                                <textarea name="area-text" id="area-text">TOP TEXT</textarea>
+                                <div class="checkbox-panel">
+                                    <input type="checkbox" name="top-text" id="no-top-text">
+                                    <label for="top-text">Sin texto superior</label>
+                                </div>
+                            </div>
+                            <div class="panel-control">
+                                <p class="panel-control-title">inferior</p>
+                                <textarea name="area-text-bottom" id="area-text-bottom">BOTTOM TEXT</textarea>
+                                <div class="checkbox-panel">
+                                    <input type="checkbox" name="sub-text" id="no-sub-text">
+                                    <label for="sub-text">Sin texto inferior</label>
+                                </div>
+                            </div>
+                            <div class="panel-control">
+                                <p class="panel-control-title">fuente</p>
+                                <select name="font" id="font">
+                                    <option value="arial">Arial</option>
+                                    <option value="arial-black">Arial Black</option>
+                                    <option value="american-type">American Typewriter</option>
+                                    <option value="andale-mono">Andale Mono</option>
+                                    <option value="comic-sans">Comic Sans MS</option>
+                                    <option value="helvetica">Helvetica</option>
+                                    <option value="impact" selected>Impact</option>
+                                    <option value="verdana">Verdana</option>
+                                    <option value="times-new">Times New Roman</option>
+                                </select>
+                            </div>
+                            <div class="panel-control-inline">
+                                <input type="number" name="font-size" id="font-size" value="40">
+                                <i class="fas fa-align-left" id="align-left"></i>
+                                <i class="fas fa-align-center" id="align-center"></i>
+                                <i class="fas fa-align-right" id="align-right"></i>
+                            </div>
+                            <div class="panel-control-inline">
+                                <div class="panel-control">
+                                    <p class="panel-control-title">color</p>
+                                    <div class="panel-control-color-input panel-text-color">            
+                                        <input type="color" name="font-color" id="font-color" value="#000000">
+                                        <span id="color-font-value">#000000</span>
+                                    </div>
+                                </div>
+                                <div class="panel-control">
+                                    <p class="panel-control-title">fondo</p>
+                                    <div class="panel-control-color-input panel-text-color">            
+                                        <input type="color" name="font-bg-color" id="font-bg-color" value="#FFFFFF">
+                                        <span id="color-bg-value">#FFFFFF</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-control">
+                                <div class="checkbox-panel">
+                                    <input type="checkbox" name="trans-text" id="trans-text">
+                                    <label for="sub-text">fondo transparente</label>
+                                </div>
+                            </div>
+                            <div class="panel-control">
+                                <p class="panel-control-title">contorno</p>
+                                <div class="panel-control-inline">
+                                    <span id="cont-none">Ninguno</span>
+                                    <span id="cont-claro">Claro</span>
+                                    <span id="cont-oscuro">Oscuro</span>
+                                </div>
+                            </div>
+                            <div class="panel-control">
+                                <p class="panel-control-title">espaciado</p>
+                                <input type="number" name="font-sp" id="font-sp" value="18">
+                            </div>
+                            <div class="panel-control">
+                                <p class="panel-control-title">interlineado</p>
+                                <select name="font-int" id="font-int">
+                                    <option value="0.8">0.8</option>
+                                    <option value="1">1</option>
+                                    <option value="1.2" selected>1.2</option>
+                                    <option value="1.5">1.5</option>
+                                    <option value="2">2</option>
+                                    <option value="2.5">2.5</option>
+                                </select>
+                            </div>
+                        </section>               
+                    </aside>
+                </section>
+            </div>
+        </main>
+    <script src="app.js"></script>
+</body>
+</html>

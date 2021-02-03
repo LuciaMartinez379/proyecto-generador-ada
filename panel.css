@@ -1,0 +1,119 @@
+/*Panel de opciones*/
+
+aside {
+    position: fixed;
+    right: 0;
+    top: 0;
+    overflow: auto;
+    width: 260px;
+    height: 100%;
+    background-color: #222733;
+    text-transform: uppercase;
+    padding: 30px 10px;
+}
+
+#close-btn {
+    border: none;
+    background-color: transparent;
+    color: white;
+    float: right;
+}
+
+h5 {
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.panel-control {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.panel-control-title {
+    color: white;
+    font-size: .9em;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#img-url {
+    border: none;
+    border-radius: 2px;
+    background-color: #30343F;
+    height: 35px;
+    width: 100%;
+    font-size: .7em;
+    color: white;
+    padding-left: 5px;
+}
+
+.panel-control-inline {
+    width: 100%;
+    display: flex;
+    margin: 10px 0;
+}
+
+.panel-control-color-input {
+    width: 50%;
+    display: flex;
+    height: 35px;
+    background-color: #30343F;
+    margin-right: 10px;
+    padding: 0 4px;
+    border-radius: 2px;
+}
+
+#fondo-color, #font-color, #font-bg-color {
+   width: 25px;
+   margin-top: 5px;
+   background-color: transparent;
+   border: none;
+}
+
+span {
+    font-size: .8em;
+    line-height: 1.9;
+    color: white;
+    margin-top: 5px;
+}
+
+#blend-mode {
+    width: 50%;
+    background-color: #30343F;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+.panel-control-inner {
+    margin: 6px 0;
+}
+
+label {
+    color: white;
+    font-size: .8em;
+}
+
+input[type="range"] {
+    margin: 5px 0;
+    height: 5px;
+    width: 100%;
+    background-color: #5a5d68;
+    border-radius: 10px;
+    appearance: none;
+}
+
+#reset-btn {
+    width: 60%;
+    height: 35px;
+    border: none;
+    color: white;
+    background-color: #30343F;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color .2s;
+}
