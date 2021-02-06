@@ -63,12 +63,14 @@ const paneles = () => {
         panel.style.display = 'block';
         imgPanel.style.display = 'block';
         textPanel.style.display = 'none';
+        panelResponsive();
     });
         
     textBtn.addEventListener('click', () => {
         panel.style.display = 'block';
         textPanel.style.display = 'block';
         imgPanel.style.display = 'none';
+        panelResponsive();
     });
 }
 
@@ -87,6 +89,13 @@ darkBtn.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
     panel.style.display = 'none';
 });
+
+descargar.addEventListener('click', (e) => {
+    domtoimage.toBlob(document.getElementById('meme-img'))
+    .then(function (blob) {
+        window.saveAs(blob, 'mi-meme.png');
+    });
+})
 
 
 //Panel de imagen
@@ -117,41 +126,27 @@ blendMode.addEventListener('change', (e) => {
     }
 });
 
-filtroBrillo.addEventListener('change', (e) => {
-    memeImg.style.filter = `brightness(${e.target.value})`;
-});
+const filter = () => {
+    memeImg.style.filter = `brightness(${filtroBrillo.value}) opacity(${filtroOpacidad.value}) contrast(${filtroContraste.value}%) blur(${filtroDesenfoque.value}px) grayscale(${filtroGrayscale.value}%) sepia(${filtroSepia.value}%) hue-rotate(${filtroHue.value}deg) saturate(${filtroSat.value}%) invert(${filtroNeg.value})`;
+};
 
-filtroOpacidad.addEventListener('change', (e) => {
-    memeImg.style.filter = `opacity(${e.target.value})`;
-});
+filtroBrillo.addEventListener('change', filter);
 
-filtroContraste.addEventListener('change', (e) => {
-    memeImg.style.filter = `contrast(${e.target.value}%)`;
-});
+filtroOpacidad.addEventListener('change', filter);
 
-filtroDesenfoque.addEventListener('change', (e) => {
-    memeImg.style.filter = `blur(${e.target.value}px)`;
-});
+filtroContraste.addEventListener('change', filter);
 
-filtroGrayscale.addEventListener('change', (e) => {
-    memeImg.style.filter = `grayscale(${e.target.value}%)`;
-});
+filtroDesenfoque.addEventListener('change', filter);
 
-filtroSepia.addEventListener('change', (e) => {
-    memeImg.style.filter = `sepia(${e.target.value}%)`;
-});
+filtroGrayscale.addEventListener('change', filter);
 
-filtroHue.addEventListener('change', (e) => {
-    memeImg.style.filter = `hue-rotate(${e.target.value}deg)`;
-});
+filtroSepia.addEventListener('change', filter);
 
-filtroSat.addEventListener('change', (e) => {
-    memeImg.style.filter = `saturate(${e.target.value})`;
-});
+filtroHue.addEventListener('change', filter);
 
-filtroNeg.addEventListener('change', (e) => {
-    memeImg.style.filter = `invert(${e.target.value})`;
-});
+filtroSat.addEventListener('change', filter);
+
+filtroNeg.addEventListener('change', filter);
 
 filterReset.addEventListener('click', (e) => {
     e.preventDefault();
@@ -164,6 +159,7 @@ filterReset.addEventListener('click', (e) => {
     filtroHue.value = 0;
     filtroSat.value = 100;
     filtroNeg.value = 0;
+    filter();
 });
 
 
@@ -257,41 +253,61 @@ fontBg.addEventListener('input', (e) => {
     colorBgFont.innerText = `${e.target.value}`;
 });
 
-/*transText.addEventListener('change', () => {
-    if (transText.checked === true) {
+transText.addEventListener('change', () => {
+    if (transText.checked) {
         textTop.style.backgroundColor = 'transparent';
+        textTop.style.zIndex = '2';
         textBottom.style.backgroundColor = 'transparent';
+        textBottom.style.zIndex = '2';
+        textBottom.style.marginTop = '72%';
+        memeImg.style.height = '100%';
+        memeImg.style.position = 'absolute';
+        memeImg.style.zIndex = '1';
     } else {
         textTop.style.backgroundColor = 'white';
         textBottom.style.backgroundColor = 'white';
     }
-});*/
-
-contNone.addEventListener('click', () => {
-    textTop.style.textShadow = 'none';
-    textBottom.style.textShadow = 'none';
 });
 
-/*contClaro.addEventListener('click', () => {
-    const textoTop = textTop.innerText;
-    const textoBot = textBottom.innerText;
-    textoTop.style.textShadow = `rgb(255 255 255) 2px 2px, rgb(255 255 255) -2px 2px, rgb(255 255 255) 2px -2px, rgb(255 255 255) -2px -2px`;
-    textoBot.style.textShadow = `rgb(255 255 255) 2px 2px, rgb(255 255 255) -2px 2px, rgb(255 255 255) 2px -2px, rgb(255 255 255) -2px -2px`;
+contNone.addEventListener('click', (e) => {
+    e.preventDefault();
+    textTop.classList.remove('contorno-claro');
+    textTop.classList.remove('contorno-oscuro');
+    textBottom.classList.remove('contorno-claro');
+    textBottom.classList.remove('contorno-oscuro');
 });
 
-contOscuro.addEventListener('click', () => {
-    
-});*/
+contClaro.addEventListener('click', (e) => {
+    e.preventDefault();
+    textTop.classList.add('contorno-claro');
+    textBottom.classList.add('contorno-claro');
+});
+
+contOscuro.addEventListener('click', (e) => {
+    e.preventDefault();
+    textTop.classList.add('contorno-oscuro');
+    textBottom.classList.add('contorno-oscuro');
+});
 
 espaciado.addEventListener('change', (e) => {
     textTop.style.padding = `${e.target.value}px 15px`;
     textBottom.style.padding = `${e.target.value}px 15px`;
+    textBottom.style.marginTop = '0';
 });
 
 interlineado.addEventListener('change', (e) => {
     textTop.style.lineHeight = `${e.target.value}`;
     textBottom.style.lineHeight = `${e.target.value}`;
+    textBottom.style.marginTop = '0';
 });
 
 
 //Responsive
+
+const panelResponsive = () => {
+    if (window.screen.width <= 700) {
+        panel.classList.add('panel-responsive');
+    } else {
+        panel.classList.remove('panel-responsive');
+    }
+};

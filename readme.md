@@ -15,7 +15,7 @@
 ### Para clonar este repo seguí estos pasos en tu terminal:
 <br>
 
-- Ir al [repo]().
+- Ir al [repo](https://github.com/LuciaMartinez379/proyecto-generador-ada).
 - Forkearlo.
 - Ir a Code y copiar la URL.
 - Abrir el bash.

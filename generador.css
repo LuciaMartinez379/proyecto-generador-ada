@@ -1,9 +1,5 @@
 /*Generador*/
 
-main {
-    flex-grow: 1;
-}
-
 header {
     height: 120px;
     background-color: #191E2B;
@@ -36,12 +32,14 @@ li {
     transition: background-color .2s;
 }
 
-.container {
-    height: 100%;
+.generator {
+    display: flex;
+    flex-grow: 1;
 }
 
 .generator-background {
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -50,21 +48,14 @@ li {
     height: 100%;
 }
 
-article {
+.generator-meme {
     width: 100%;
     max-width: 600px;
-    min-width: 400px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    top: 10px;
-}
-
-.generator-meme {
     text-align: center;
     height: 600px;
     background-color: black;
     position: relative;
+    top: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -74,20 +65,29 @@ article {
     text-transform: uppercase;
     font-size: 40px;
     background-color: white;
-    padding: 35px 50px;
+    padding: 20px 50px;
     line-height: 1.2;
     position: static;
 }
 
+.contorno-claro {
+    -webkit-text-stroke: 2px white;
+}
+
+.contorno-oscuro {
+    -webkit-text-stroke: 2px black;
+}
+
 #meme-img {
     flex-grow: 1;
+    width: 100%;
     background-size: cover;
 }
 
 #download-btn {
     padding: 15px;
     height: auto;
-    margin: 15px auto;
+    margin-top: 30px;
     font-size: .8em;
     border: none;
     background-color: #2e7d32;
