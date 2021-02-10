@@ -91,7 +91,7 @@ closeBtn.addEventListener('click', () => {
 });
 
 descargar.addEventListener('click', (e) => {
-    domtoimage.toBlob(document.getElementById('meme-img'))
+    domtoimage.toBlob(document.getElementById('meme-generator'))
     .then(function (blob) {
         window.saveAs(blob, 'mi-meme.png');
     });
